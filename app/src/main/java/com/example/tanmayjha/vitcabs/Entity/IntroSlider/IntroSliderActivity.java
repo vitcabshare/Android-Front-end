@@ -18,8 +18,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.tanmayjha.gdgvitvellore.Entity.LogIn.LoginActivity;
-import com.example.tanmayjha.gdgvitvellore.R;
+import com.example.tanmayjha.vitcabs.Entity.LogIn.LoginActivity;
+import com.example.tanmayjha.vitcabs.R;
 
 public class IntroSliderActivity extends AppCompatActivity {
     private ViewPager viewPager;

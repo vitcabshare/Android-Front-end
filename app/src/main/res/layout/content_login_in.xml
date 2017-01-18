@@ -11,22 +11,59 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.tanmayjha.vitcabs.Entity.LogIn.LoginInActivity"
+    tools:context="com.example.tanmayjha.vitcabs.Entity.LogIn.LoginActivity"
     tools:showIn="@layout/activity_login_in">
 
     <ImageView
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"/>
+    
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_login_user_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_user_email"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+            android:textColorHint="#6D6D6D"
+            android:textColor="#000000"
+            android:ems="8"
+            android:inputType="text"
+            android:hint="Enter your email id:"
+            android:layout_gravity="left"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        style="@style/HeadingFont"
-        android:hint="Enter your email id"/>
-    <EditText
-        style="@style/HeadingFont"
-        android:hint="Enter your password"/>
-
-    <!--
-    TODO: These edit text will be replaced by floating text
-    -->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_user_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_password"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+            android:textColorHint="#6D6D6D"
+            android:textColor="#000000"
+            android:ems="8"
+            android:inputType="text"
+            android:hint="Please write here..."
+            android:layout_gravity="left"/>
+    </android.support.design.widget.TextInputLayout>
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonlayout"
+        android:text="Login"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"/>
+    <!--TODO: Change color of button please Also, use style here later-->
 </LinearLayout>
