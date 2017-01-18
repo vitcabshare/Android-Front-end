@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tanmayjha.vitcabs.Entity.Welcome.WelcomeFragment">
+
+    <ImageView
+        android:layout_width="@dimen/img_width_height"
+        android:layout_height="@dimen/img_width_height"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/logo"/>
+    <TextView
+        android:layout_gravity="center_horizontal"
+        style="@style/HeadingFont"
+        android:text="Welcome"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        style="@style/BodyFont"
+        android:padding="10dp"
+        android:text="We aims at easing the process of Cab Sharing and Booking between VIT and near-by places such as Airports, Railway Stations, Pondicherry, and Kodaikanal."/>
+
+
+
+</LinearLayout>
