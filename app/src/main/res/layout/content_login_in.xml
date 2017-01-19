@@ -20,53 +20,14 @@
         android:layout_height="150dp"
         android:src="@drawable/logo"
         android:layout_gravity="center_horizontal"/>
-    
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_login_user_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/login_user_email"
-            android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif"
-            android:textSize="14sp"
-            android:textColorHint="#6D6D6D"
-            android:textColor="#000000"
-            android:ems="8"
-            android:inputType="text"
-            android:hint="Enter your email id:"
-            android:layout_gravity="left"/>
-    </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_user_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/user_password"
-            android:layout_marginTop="5dp"
-            android:fontFamily="sans-serif"
-            android:textSize="14sp"
-            android:textColorHint="#6D6D6D"
-            android:textColor="#000000"
-            android:ems="8"
-            android:inputType="text"
-            android:hint="Please write here..."
-            android:layout_gravity="left"/>
-    </android.support.design.widget.TextInputLayout>
-    
-    <Button
+    <com.google.android.gms.common.SignInButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttonlayout"
-        android:text="Login"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:layout_gravity="center_horizontal"/>
-    <!--TODO: Change color of button please Also, use style here later-->
+        android:id="@+id/button_sign_in">
+    </com.google.android.gms.common.SignInButton>
 
     <TextView
         android:id="@+id/skip_this"

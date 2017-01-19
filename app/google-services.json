@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "317841576243",
+    "project_id": "vit-cabs-share"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317841576243:android:3005c1d55e912431",
+        "android_client_info": {
+          "package_name": "com.example.tanmayjha.vitcabs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317841576243-jpgqg1g9fqddq651bkf2att2m9muu0ek.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tanmayjha.vitcabs",
+            "certificate_hash": "164925C9C289A6CD4CC69BC8F252E8B8C45C0BAC"
+          }
+        },
+        {
+          "client_id": "317841576243-1amnuddfgj0aml7mt6epjo2pouvtbc3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpkpmZVzhrdTgg5WBEjSRQDccf-21ic98"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
