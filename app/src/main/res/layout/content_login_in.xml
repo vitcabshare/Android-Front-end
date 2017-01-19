@@ -15,8 +15,9 @@
     tools:showIn="@layout/activity_login_in">
 
     <ImageView
-        android:layout_width="@dimen/img_width_height"
-        android:layout_height="@dimen/img_width_height"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
         android:src="@drawable/logo"
         android:layout_gravity="center_horizontal"/>
     
@@ -66,4 +67,13 @@
         android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"/>
     <!--TODO: Change color of button please Also, use style here later-->
+
+    <TextView
+        android:id="@+id/skip_this"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="Skip this"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="20dp"/>
 </LinearLayout>

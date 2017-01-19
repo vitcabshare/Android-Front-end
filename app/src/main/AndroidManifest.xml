@@ -18,6 +18,13 @@
             android:label="@string/title_activity_login_in"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".Entity.IntroSlider.IntroSliderActivity"
+            android:label="Intro Slider"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity
             android:name=".Entity.SplashScreen.SplashScreenActivity"
             android:label="@string/title_activity_splash_screen"
