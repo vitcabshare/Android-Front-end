@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellers">
+
+    <!--TODO: Filtering logic needs to be applied-->
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/HeadingFont"
+        android:text="All Travellers"
+        android:layout_gravity="center_horizontal"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <android.support.v7.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_member"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="10dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/member_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@android:drawable/sym_def_app_icon"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#80000000"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+                    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                        style="@style/BodyFont"
+                        android:text="Tanmay Jha"/>
+                    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                        style="@style/BodyFont"
+                        android:text="Date:"/>
+                    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                        style="@style/BodyFont"
+                        android:text="Katapadi to Chennai "/>
+                    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                        style="@style/BodyFont"
+                        android:text="4:00pm"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                            style="@style/BodyFont"
+                            android:text="Email me at"/>
+                        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                            style="@style/BodyFont"
+                            android:text=" tanmay.jha1@gmail.com"/>
+                        </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                            style="@style/BodyFont"
+                            android:text="or call on"/>
+                        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                            style="@style/BodyFont"
+                            android:text=" 9790048621"/>
+                        </LinearLayout>
+
+                    <Button
+                        android:layout_marginTop="2dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Send Request"
+                        android:background="@drawable/buttonlayout"
+                        android:layout_gravity="right"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</LinearLayout>

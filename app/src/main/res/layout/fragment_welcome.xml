@@ -10,16 +10,16 @@
         android:layout_height="@dimen/img_width_height"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/logo"/>
-    <TextView
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
         android:layout_gravity="center_horizontal"
         style="@style/HeadingFont"
         android:text="Welcome"/>
-    <TextView
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
         android:layout_marginTop="20dp"
         style="@style/BodyFont"
         android:padding="10dp"
         android:text="We aims at easing the process of Cab Sharing and Booking between VIT and near-by places such as Airports, Railway Stations, Pondicherry, and Kodaikanal."/>
-
-
 
 </LinearLayout>

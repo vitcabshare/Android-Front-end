@@ -1,13 +1,153 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment">
+    android:padding="10dp"
+    tools:context="com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        android:text="Enter your travelling details"
+        style="@style/HeadingFont" />
+
+    <LinearLayout
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+            style="@style/BodyFont"
+            android:text="From:"
+            android:layout_weight="1"/>
+        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+            style="@style/BodyFont"
+            android:text="To:"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/locations"
+            android:prompt="@string/spinner_prompt"
+            android:layout_weight="1">
+        </Spinner>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/locations"
+            android:prompt="@string/spinner_prompt"
+            android:layout_weight="1">
+        </Spinner>
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+            style="@style/BodyFont"
+            android:text="Date of travel: "
+            android:layout_weight="1"/>
+        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+            style="@style/BodyFont"
+            android:text="Time: "
+            android:layout_gravity="left"
+            android:layout_weight="1"/>
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_edit_text_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
+                style="@style/BodyFont"
+                android:id="@+id/edit_text_date"
+                android:ems="8"
+                android:inputType="text"
+                android:hint="Date of travel:"
+                android:layout_gravity="left"
+                android:focusable="false"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_edit_text_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
+                style="@style/BodyFont"
+                android:id="@+id/edit_text_time"
+                android:ems="8"
+                android:inputType="text"
+                android:hint="Time of travel:"
+                android:layout_gravity="left"
+                android:focusable="false"/>
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+    android:id="@+id/input_edit_text_flight_no_or_train_no"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
+        style="@style/BodyFont"
+        android:id="@+id/flight_no_or_train_no"
+        android:ems="8"
+        android:inputType="text"
+        android:hint="Flight no or train no (Optional)"
+        android:layout_gravity="left" />
+</android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:background="@drawable/buttonlayout"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFF"/>
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/HeadingFont"
+        android:text="Personal Details"/>
+
+    <Switch
+        android:text="Show my last name ?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_last_name" />
+
+    <Switch
+        android:text="Show my email to other?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_email" />
+
+    <Switch
+        android:text="Show my phone no. to others ?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_phone_no" />
+
+    <Button
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:background="@drawable/buttonlayout"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#FFF"/>
+
+</LinearLayout>

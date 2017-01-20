@@ -14,4 +14,18 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
+
+    <string name="spinner_prompt">Choose your country</string>
+
+    <string-array name="locations">
+        <item>Choose your location</item>
+        <item>VIT Vellore</item>
+        <item>VIT Chennai</item>
+        <item>Chennai Airport</item>
+        <item>Bangalore Airport</item>
+        <item>Chennai Railway Station</item>
+        <item>Katpadi Railway Station</item>
+        <item>Pondicherry</item>
+        <item>Kodaikanal</item>
+    </string-array>
 </resources>

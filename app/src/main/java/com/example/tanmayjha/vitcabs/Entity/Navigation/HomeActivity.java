@@ -3,10 +3,8 @@ package com.example.tanmayjha.vitcabs.Entity.Navigation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -21,7 +19,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.tanmayjha.vitcabs.Entity.AboutUs.AboutUsFragment;
+import com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment;
+import com.example.tanmayjha.vitcabs.Entity.BookACab.BookACabFragment;
 import com.example.tanmayjha.vitcabs.Entity.LogIn.LoginActivity;
+import com.example.tanmayjha.vitcabs.Entity.PoolRequest.PoolRequestFragment;
+import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellers;
 import com.example.tanmayjha.vitcabs.Entity.Welcome.WelcomeFragment;
 import com.example.tanmayjha.vitcabs.R;
 import com.google.android.gms.auth.api.Auth;
@@ -50,15 +53,6 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -89,7 +83,7 @@ public class HomeActivity extends AppCompatActivity
     public void onStart()
     {
         super.onStart();
-        String title="Timeline";
+        String title="Welcome";
         getSupportActionBar().setTitle(title);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         mGoogleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
@@ -150,21 +144,22 @@ public class HomeActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if(id == R.id.nav_home){
-
+            replaceFragment(new WelcomeFragment(),"Welcome");
         } else if (id == R.id.nav_add_a_trip) {
-            // Handle the camera action
+            replaceFragment(new AddATripFragment(),"Add a Trip");
         } else if (id == R.id.nav_pool_request) {
-
+            replaceFragment(new PoolRequestFragment(),"Pool Request");
         } else if (id == R.id.nav_show_all_trip) {
-
+            replaceFragment(new ShowAllTravellers(),"All Travellers");
         } else if (id == R.id.nav_book_a_cab) {
-
-        } else if (id == R.id.nav_contact_us) {
-
+            replaceFragment(new BookACabFragment(),"Book A Cab");
+        } else if (id == R.id.nav_about){
+            replaceFragment(new AboutUsFragment(),"About Us Fragment");
         }
         else if (id == R.id.nav_log_out){
 
@@ -178,12 +173,19 @@ public class HomeActivity extends AppCompatActivity
             Intent intent=new Intent(this,LoginActivity.class);
             startActivity(intent);
         }
-
         //TODO: Make function for fragment transaction
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void replaceFragment(Fragment fragment,String title)
+    {
+        FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.container,fragment);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+        getSupportActionBar().setTitle(title);
     }
 
 
