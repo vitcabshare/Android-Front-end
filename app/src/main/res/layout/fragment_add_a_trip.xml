@@ -117,45 +117,35 @@
         android:focusableInTouchMode="true"/>
 </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Reset"
-        android:id="@+id/add_a_trip_button_reset"
-        android:background="@drawable/buttonlayout"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#FFF"/>
-    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
-        style="@style/HeadingFont"
-        android:text="Personal Details"/>
-
-    <Switch
-        android:text="Show my last name ?"
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_a_trip_switch_last_name" />
+        android:orientation="horizontal">
 
-    <Switch
-        android:text="Show my email to other?"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/add_a_trip_switch_email" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reset"
+            android:id="@+id/add_a_trip_button_reset"
+            android:background="@drawable/buttonlayout"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textColor="#FFF"
+            android:layout_weight="1"/>
 
-    <Switch
-        android:text="Show my phone no. to others ?"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/add_a_trip_switch_phone_no" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:id="@+id/add_a_trip_button_done"
+            android:background="@drawable/buttonlayout"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFF"
+            android:layout_weight="1"/>
 
-    <Button
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done"
-        android:id="@+id/add_a_trip_button_done"
-        android:background="@drawable/buttonlayout"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#FFF"/>
-
+    </LinearLayout>
 </LinearLayout>

@@ -47,7 +47,6 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
     DatePickerDialog.OnDateSetListener dateSetListener;
     TextInputLayout dateLayout,timeLayout,flightNoLayout;
     Button resetButton,doneButton;
-    Switch lastNameSwitch,emailSwitch,phoneNoSwitch;
     String lastName,phoneNo,email;
     AccountInformation accountInformation;
     Spinner fromLocationSpinner,toLocationSpinner;
@@ -72,16 +71,10 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
         flightNoLayout=(TextInputLayout)view.findViewById(R.id.input_add_a_trip_flight_no_or_train_no);
         dateLayout=(TextInputLayout)view.findViewById(R.id.input_add_a_trip_date);
         timeLayout=(TextInputLayout)view.findViewById(R.id.input_add_a_trip_time);
-        lastNameSwitch=(Switch)view.findViewById(R.id.add_a_trip_switch_last_name);
-        emailSwitch=(Switch)view.findViewById(R.id.add_a_trip_switch_email);
 
         fromLocationSpinner=(Spinner)view.findViewById(R.id.add_a_trip_from_location);
         toLocationSpinner=(Spinner)view.findViewById(R.id.add_a_trip_to_location);
 
-        if(!accountInformation.getLastName().trim().isEmpty()) {
-            emailSwitch.setText("Show my email(" + accountInformation.getEmail() + ")to other?");
-            lastNameSwitch.setText("Show my last name(" + accountInformation.getLastName() + ")?");
-        }
         resetButton.setOnClickListener(this);
         doneButton.setOnClickListener(this);
         myCalendar = Calendar.getInstance();

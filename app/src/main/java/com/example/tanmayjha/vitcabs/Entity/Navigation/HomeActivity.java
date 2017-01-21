@@ -25,6 +25,7 @@ import com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment;
 import com.example.tanmayjha.vitcabs.Entity.BookACab.BookACabFragment;
 import com.example.tanmayjha.vitcabs.Entity.LogIn.LoginActivity;
 import com.example.tanmayjha.vitcabs.Entity.PoolRequest.PoolRequestFragment;
+import com.example.tanmayjha.vitcabs.Entity.Settings.SettingsActivity;
 import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellers;
 import com.example.tanmayjha.vitcabs.Entity.Welcome.WelcomeFragment;
 import com.example.tanmayjha.vitcabs.R;
@@ -64,10 +65,7 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        WelcomeFragment timelineFragment=new WelcomeFragment();
-        ft.replace(R.id.container,timelineFragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
+        replaceFragment(new ShowAllTravellers(),"All Travellers");
 
         Intent fromLogin=getIntent();
         personName=fromLogin.getStringExtra("personName");
@@ -141,6 +139,7 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
@@ -154,9 +153,7 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if(id == R.id.nav_home){
-            replaceFragment(new WelcomeFragment(),"Welcome");
-        } else if (id == R.id.nav_add_a_trip) {
+        if (id == R.id.nav_add_a_trip) {
             replaceFragment(new AddATripFragment(),"Add a Trip");
         } else if (id == R.id.nav_pool_request) {
             replaceFragment(new PoolRequestFragment(),"Pool Request");

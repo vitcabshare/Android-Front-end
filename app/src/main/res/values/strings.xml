@@ -36,5 +36,6 @@
         <item>Report a bug</item>
         <item>Report an issue</item>
     </string-array>
+    <string name="title_activity_settings">SettingsActivity</string>
 
 </resources>
