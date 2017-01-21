@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -49,6 +50,7 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
     Switch lastNameSwitch,emailSwitch,phoneNoSwitch;
     String lastName,phoneNo,email;
     AccountInformation accountInformation;
+    Spinner fromLocationSpinner,toLocationSpinner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,6 +74,9 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
         timeLayout=(TextInputLayout)view.findViewById(R.id.input_add_a_trip_time);
         lastNameSwitch=(Switch)view.findViewById(R.id.add_a_trip_switch_last_name);
         emailSwitch=(Switch)view.findViewById(R.id.add_a_trip_switch_email);
+
+        fromLocationSpinner=(Spinner)view.findViewById(R.id.add_a_trip_from_location);
+        toLocationSpinner=(Spinner)view.findViewById(R.id.add_a_trip_to_location);
 
         if(!accountInformation.getLastName().trim().isEmpty()) {
             emailSwitch.setText("Show my email(" + accountInformation.getEmail() + ")to other?");
@@ -150,7 +155,7 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
             }
             case R.id.add_a_trip_button_done:
             {
-                if(dateEditText.getText().toString().isEmpty()||timeEditText.getText().toString().isEmpty())
+                if(dateEditText.getText().toString().isEmpty()||timeEditText.getText().toString().isEmpty()||fromLocationSpinner.getSelectedItem().toString().isEmpty()||toLocationSpinner.getSelectedItem().toString().isEmpty())
                 {   if(dateEditText.getText().toString().isEmpty())
                     {
                         dateLayout.setErrorEnabled(true);
@@ -176,6 +181,15 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
                     {
                         timeLayout.setErrorEnabled(false);
                     }
+
+                    if(fromLocationSpinner.getSelectedItem().toString().equals("Choose your location"))
+                    {
+                        Toast.makeText(getActivity(),"Enter your journey's from location",Toast.LENGTH_SHORT).show();
+                    }
+                    if(toLocationSpinner.getSelectedItem().toString().equals("Choose your location"))
+                    {
+                        Toast.makeText(getActivity(),"Enter your journey's to location",Toast.LENGTH_SHORT).show();
+                    }
                     break;
                 }
                 else {
@@ -186,7 +200,7 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface arg0, int arg1) {
-                                    Toast.makeText(getActivity(),"Request Created",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getActivity(),"Request Created. You will shortly get a call",Toast.LENGTH_LONG).show();
                                     ShowAllTravellers showAllTravellers=new ShowAllTravellers();
                                     FragmentChangeListener fc=(FragmentChangeListener)getActivity();
                                     fc.replaceFragmentFromFragments(showAllTravellers,"All Trips");

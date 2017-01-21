@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
             String personLastName=acct.getFamilyName();
             Log.v("Last Name",personLastName);
+            accountInformation.setFullName(acct.getDisplayName());
             accountInformation.setEmail(acct.getEmail());
             accountInformation.setLastName(acct.getFamilyName());
             Intent toMainActivity=new Intent(this, HomeActivity.class);

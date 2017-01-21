@@ -80,9 +80,11 @@
                 android:ems="8"
                 android:inputType="text"
                 android:hint="Date of travel:"
+                android:focusable="false"
                 android:layout_gravity="left"
-                android:focusable="false"/>
+                />
         </android.support.design.widget.TextInputLayout>
+
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/input_add_a_trip_time"
@@ -96,7 +98,8 @@
                 android:inputType="text"
                 android:hint="Time of travel:"
                 android:layout_gravity="left"
-                android:focusable="false"/>
+                android:focusable="false"
+                />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 

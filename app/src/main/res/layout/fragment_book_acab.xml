@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment"
     android:layout_width="match_parent"
+    android:padding="10dp"
     android:layout_height="match_parent">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-
     android:orientation="vertical">
 
     <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
@@ -22,33 +21,33 @@
         android:orientation="horizontal">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_edit_text_name"
+            android:id="@+id/book_a_cab_input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
                 style="@style/BodyFont"
-                android:id="@+id/edit_text_name"
+                android:id="@+id/book_a_cab_name"
                 android:ems="8"
-                android:inputType="text"
+                android:inputType="textPersonName"
                 android:hint="Enter your name: "
                 android:layout_gravity="left"
-                android:focusable="false"/>
+                />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_edit_text_contact_no"
+            android:id="@+id/book_a_cab_input_contact_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
                 style="@style/BodyFont"
-                android:id="@+id/edit_text_contact_no"
+                android:id="@+id/book_a_cab_contact_no"
                 android:ems="8"
-                android:inputType="text"
+                android:inputType="phone"
                 android:hint="Contact no: "
                 android:layout_gravity="left"
-                android:focusable="false"/>
+                />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 <LinearLayout
@@ -56,33 +55,33 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_edit_text_email"
+        android:id="@+id/book_a_cab_input_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
         <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
             style="@style/BodyFont"
-            android:id="@+id/edit_text_email"
+            android:id="@+id/book_a_cab_email"
             android:ems="8"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:hint="Email: "
             android:layout_gravity="left"
-            android:focusable="false"/>
+            />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_edit_text_no_of_people"
+        android:id="@+id/book_a_cab_input_no_of_people"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
         <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
             style="@style/BodyFont"
-            android:id="@+id/edit_text_contact_no_of_people"
+            android:id="@+id/book_a_cab_no_of_people"
             android:ems="8"
-            android:inputType="text"
-            android:hint="Number of poeple "
+            android:inputType="number"
+            android:hint="Number of people "
             android:layout_gravity="left"
-            android:focusable="false"/>
+            />
     </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>
@@ -111,6 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/locations"
+            android:id="@+id/book_a_cab_spinner_from_location"
             android:prompt="@string/spinner_prompt"
             android:layout_weight="1">
         </Spinner>
@@ -118,60 +118,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/locations"
+            android:id="@+id/book_a_cab_spinner_to_location"
             android:prompt="@string/spinner_prompt"
             android:layout_weight="1">
         </Spinner>
     </LinearLayout>
-
-    <!--<LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
-            style="@style/BodyFont"
-            android:text="Date of travel: "
-            android:layout_weight="1"/>
-        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
-            style="@style/BodyFont"
-            android:text="Time: "
-            android:layout_gravity="left"
-            android:layout_weight="1"/>
-    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp">
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_edit_text_date"
+            android:id="@+id/book_a_cab_input_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
                 style="@style/BodyFont"
-                android:id="@+id/edit_text_date"
+                android:id="@+id/book_a_cab_date"
                 android:ems="8"
                 android:inputType="text"
                 android:hint="Date of travel:"
+                android:focusable="false"
                 android:layout_gravity="left"
-                android:focusable="false"/>
+                />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_edit_text_time"
+            android:id="@+id/book_a_cab_input_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
                 style="@style/BodyFont"
-                android:id="@+id/edit_text_time"
+                android:id="@+id/book_a_cab_time"
                 android:ems="8"
                 android:inputType="text"
                 android:hint="Time of travel:"
                 android:layout_gravity="left"
-                android:focusable="false"/>
+                android:focusable="false"
+                />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -179,38 +165,38 @@
         android:text="Non-AC/AC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/switch1" />
+        android:id="@+id/book_a_cab_ac_nonac" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_edit_text_pick_up_location"
+            android:id="@+id/book_a_cab_input_pick_up_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
                 style="@style/BodyFont"
-                android:id="@+id/edit_text_pick_up_location"
+                android:id="@+id/book_a_cab_pick_up_location"
                 android:ems="8"
                 android:inputType="text"
                 android:hint="Pick up Location:"
                 android:layout_gravity="left"
-                android:focusable="false"/>
+                />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_edit_text_any_other_information"
+            android:id="@+id/book_a_cab_input_any_other_information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
                 style="@style/BodyFont"
-                android:id="@+id/edit_text_any_other_information"
+                android:id="@+id/book_a_cab_any_other_information"
                 android:ems="8"
                 android:inputType="text"
                 android:hint="Any other information:"
                 android:layout_gravity="left"
-                android:focusable="false"/>
+                />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
     <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
@@ -225,7 +211,7 @@
         android:orientation="horizontal">
         <Button
             android:layout_margin="10dp"
-            android:id="@+id/button_price_tag"
+            android:id="@+id/book_a_cab_button_price_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Price Chart"
@@ -239,6 +225,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Done"
+            android:id="@+id/book_a_cab_button_done"
             android:background="@drawable/buttonlayout"
             android:layout_gravity="center_horizontal"
             android:textColor="#FFF"

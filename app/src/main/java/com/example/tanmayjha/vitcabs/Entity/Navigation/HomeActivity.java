@@ -117,6 +117,11 @@ public class HomeActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            Fragment f =getSupportFragmentManager().findFragmentById(R.id.container);
+            if(f instanceof WelcomeFragment)
+            {
+                finishAffinity();
+            }
         }
     }
 

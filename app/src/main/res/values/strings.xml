@@ -28,4 +28,13 @@
         <item>Pondicherry</item>
         <item>Kodaikanal</item>
     </string-array>
+
+    <string-array name="Suggestions">
+        <item>General Feedback</item>
+        <item>Suggest a feature</item>
+        <item>Have a question</item>
+        <item>Report a bug</item>
+        <item>Report an issue</item>
+    </string-array>
+
 </resources>

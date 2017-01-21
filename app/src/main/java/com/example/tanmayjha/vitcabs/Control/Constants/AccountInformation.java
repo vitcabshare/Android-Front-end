@@ -5,9 +5,20 @@ package com.example.tanmayjha.vitcabs.Control.Constants;
  */
 
 public class AccountInformation {
-    static String lastName,phoneNo,email;
+    static String lastName,phoneNo,email,fullName;
 
-    public AccountInformation(String lastName,String phoneNo,String email) {
+    public static void setFullName(String fullName) {
+        AccountInformation.fullName = fullName;
+    }
+
+    public static String getFullName() {
+
+        return fullName;
+    }
+
+    public AccountInformation(String fullName, String lastName, String phoneNo, String email) {
+        this.fullName=fullName;
+
         this.lastName=lastName;
         this.phoneNo=phoneNo;
         this.email=email;

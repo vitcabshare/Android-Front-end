@@ -1,9 +1,15 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.tanmayjha.vitcabs.Entity.AboutUs.AboutUsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.tanmayjha.vitcabs.Entity.AboutUs.AboutUsFragment">
+    android:padding="10dp">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="@dimen/img_width_height"
@@ -57,4 +63,43 @@
                 android:text="Design: Tanmay Jha\nFrontend: Tanmay Jha\nBackend:___________ "/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/HeadingFont"
+        android:text="Suggestions"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+
+    <Spinner
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_feedback_option"
+        android:layout_gravity="center_horizontal"
+        android:entries="@array/Suggestions"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/input_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
+            style="@style/BodyFont"
+            android:id="@+id/feedback"
+            android:ems="8"
+            android:inputType="text"
+            android:hint="Please write here..."
+            android:layout_gravity="left"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_marginTop="10dp"
+        style="@style/BodyFont"
+        android:layout_gravity="center_horizontal"
+        android:text="Submit"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/buttonlayout"
+        android:id="@+id/submit">
+    </Button>
 </LinearLayout>
+</ScrollView>
