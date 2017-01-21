@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
+import com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment;
 import com.example.tanmayjha.vitcabs.Entity.Navigation.HomeActivity;
 import com.example.tanmayjha.vitcabs.R;
 import com.google.android.gms.auth.api.Auth;
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressDialog mProgressDialog;
     private SignInButton buttonSignIn;
     private static final int RC_SIGN_IN = 007;
+    AccountInformation accountInformation;
 
     TextView skipThisView;
     @Override
@@ -83,6 +86,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             {
                 personPhotoUrl="https://developers.google.com/experts/img/user/user-default.png";
             }
+            String personLastName=acct.getFamilyName();
+            Log.v("Last Name",personLastName);
+            accountInformation.setEmail(acct.getEmail());
+            accountInformation.setLastName(acct.getFamilyName());
             Intent toMainActivity=new Intent(this, HomeActivity.class);
             toMainActivity.putExtra("personName",personName);
             toMainActivity.putExtra("personPhotoUrl",personPhotoUrl);

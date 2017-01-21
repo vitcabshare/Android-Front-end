@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.tanmayjha.vitcabs.Boundary.Interface.FragmentChangeListener;
 import com.example.tanmayjha.vitcabs.Entity.AboutUs.AboutUsFragment;
 import com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment;
 import com.example.tanmayjha.vitcabs.Entity.BookACab.BookACabFragment;
@@ -39,7 +40,7 @@ import com.google.android.gms.common.api.Status;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,GoogleApiClient.OnConnectionFailedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,GoogleApiClient.OnConnectionFailedListener,FragmentChangeListener {
 
     String personName="User";
     GoogleApiClient mGoogleApiClient;
@@ -173,7 +174,7 @@ public class HomeActivity extends AppCompatActivity
             Intent intent=new Intent(this,LoginActivity.class);
             startActivity(intent);
         }
-        //TODO: Make function for fragment transaction
+        //TODO: Sol
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -184,6 +185,15 @@ public class HomeActivity extends AppCompatActivity
         FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.container,fragment);
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
+        getSupportActionBar().setTitle(title);
+    }
+
+    @Override
+    public void replaceFragmentFromFragments(android.support.v4.app.Fragment fragment,String title) {
+        //FragmentManager fragmentManager = getSupportFragmentManager();;
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.container, fragment);
         ft.commit();
         getSupportActionBar().setTitle(title);
     }

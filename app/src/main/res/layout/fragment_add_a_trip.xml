@@ -35,11 +35,13 @@
             android:layout_height="wrap_content"
             android:entries="@array/locations"
             android:prompt="@string/spinner_prompt"
+            android:id="@+id/add_a_trip_from_location"
             android:layout_weight="1">
         </Spinner>
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/add_a_trip_to_location"
             android:entries="@array/locations"
             android:prompt="@string/spinner_prompt"
             android:layout_weight="1">
@@ -68,13 +70,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp">
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_edit_text_date"
+            android:id="@+id/input_add_a_trip_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
                 style="@style/BodyFont"
-                android:id="@+id/edit_text_date"
+                android:id="@+id/add_a_trip_date"
                 android:ems="8"
                 android:inputType="text"
                 android:hint="Date of travel:"
@@ -83,13 +85,13 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_edit_text_time"
+            android:id="@+id/input_add_a_trip_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
                 style="@style/BodyFont"
-                android:id="@+id/edit_text_time"
+                android:id="@+id/add_a_trip_time"
                 android:ems="8"
                 android:inputType="text"
                 android:hint="Time of travel:"
@@ -99,16 +101,17 @@
     </LinearLayout>
 
     <android.support.design.widget.TextInputLayout
-    android:id="@+id/input_edit_text_flight_no_or_train_no"
+    android:id="@+id/input_add_a_trip_flight_no_or_train_no"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
         style="@style/BodyFont"
-        android:id="@+id/flight_no_or_train_no"
-        android:ems="8"
+        android:id="@+id/add_a_trip_flight_no_or_train_no"
+        android:ems="14"
         android:inputType="text"
         android:hint="Flight no or train no (Optional)"
-        android:layout_gravity="left" />
+        android:layout_gravity="left"
+        android:focusableInTouchMode="true"/>
 </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -116,6 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Reset"
+        android:id="@+id/add_a_trip_button_reset"
         android:background="@drawable/buttonlayout"
         android:layout_gravity="center_horizontal"
         android:textColor="#FFF"/>
@@ -127,25 +131,26 @@
         android:text="Show my last name ?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/switch_last_name" />
+        android:id="@+id/add_a_trip_switch_last_name" />
 
     <Switch
         android:text="Show my email to other?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/switch_email" />
+        android:id="@+id/add_a_trip_switch_email" />
 
     <Switch
         android:text="Show my phone no. to others ?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/switch_phone_no" />
+        android:id="@+id/add_a_trip_switch_phone_no" />
 
     <Button
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Done"
+        android:id="@+id/add_a_trip_button_done"
         android:background="@drawable/buttonlayout"
         android:layout_gravity="center_horizontal"
         android:textColor="#FFF"/>
