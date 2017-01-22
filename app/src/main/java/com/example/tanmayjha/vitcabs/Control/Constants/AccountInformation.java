@@ -5,27 +5,66 @@ package com.example.tanmayjha.vitcabs.Control.Constants;
  */
 
 public class AccountInformation {
-    static String lastName,phoneNo,email,fullName;
+    static String lastName="",phoneNo="",email="",FirstName="",url="";
+    static boolean lastNameEnabled=false,phoneNoEnabled=false,emailEnabled=false;
 
-    public static void setFullName(String fullName) {
-        AccountInformation.fullName = fullName;
+    public static void setFirstName(String firstName) {
+        FirstName = firstName;
     }
 
-    public static String getFullName() {
+    public static String getFirstName() {
 
-        return fullName;
+        return FirstName;
     }
 
-    public AccountInformation(String fullName, String lastName, String phoneNo, String email) {
-        this.fullName=fullName;
+    public static void setUrl(String url) {
+        AccountInformation.url = url;
+    }
 
+    public static String getUrl() {
+    
+        return url;
+    }
+
+    public AccountInformation(String FirstName, String lastName, String phoneNo, String email, boolean lastNameEnabled, boolean phoneNoEnabled, boolean emailEnabled, String url) {
+        this.FirstName=FirstName;
         this.lastName=lastName;
         this.phoneNo=phoneNo;
         this.email=email;
+        this.lastNameEnabled=lastNameEnabled;
+        this.phoneNoEnabled=phoneNoEnabled;
+        this.emailEnabled=emailEnabled;
+        this.url=url;
+        
     }
 
     public static String getLastName() {
         return lastName;
+    }
+
+    public static void setLastNameEnabled(boolean lastNameEnabled) {
+        AccountInformation.lastNameEnabled = lastNameEnabled;
+    }
+
+    public static void setPhoneNoEnabled(boolean phoneNoEnabled) {
+        AccountInformation.phoneNoEnabled = phoneNoEnabled;
+    }
+
+    public static void setEmailEnabled(boolean emailEnabled) {
+        AccountInformation.emailEnabled = emailEnabled;
+    }
+
+    public static boolean isLastNameEnabled() {
+
+        return lastNameEnabled;
+    }
+
+    public static boolean isPhoneNoEnabled() {
+        return phoneNoEnabled;
+    }
+
+    public static boolean isEmailEnabled() {
+        return emailEnabled;
     }
 
     public static String getPhoneNo() {

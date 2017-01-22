@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.tanmayjha.vitcabs.Boundary.Interface.FragmentChangeListener;
+import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
 import com.example.tanmayjha.vitcabs.Entity.AboutUs.AboutUsFragment;
 import com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment;
 import com.example.tanmayjha.vitcabs.Entity.BookACab.BookACabFragment;
@@ -48,6 +49,7 @@ public class HomeActivity extends AppCompatActivity
     String TAG=HomeActivity.class.getSimpleName();
     String personPhotoUrl;
     FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+    AccountInformation accountInformation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +70,8 @@ public class HomeActivity extends AppCompatActivity
         replaceFragment(new ShowAllTravellers(),"All Travellers");
 
         Intent fromLogin=getIntent();
-        personName=fromLogin.getStringExtra("personName");
-        personPhotoUrl=fromLogin.getStringExtra("personPhotoUrl");
+        personName=accountInformation.getFullName();
+        personPhotoUrl=accountInformation.getUrl();
         Log.v("Person's name",personName);
         View hView =  navigationView.getHeaderView(0);
         TextView name=(TextView)hView.findViewById(R.id.person_name);

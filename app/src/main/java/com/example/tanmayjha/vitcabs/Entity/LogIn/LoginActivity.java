@@ -4,9 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,8 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
-import com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment;
 import com.example.tanmayjha.vitcabs.Entity.Navigation.HomeActivity;
+import com.example.tanmayjha.vitcabs.Entity.PhoneNoVerfication.PhoneNoActivity;
 import com.example.tanmayjha.vitcabs.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -27,8 +24,6 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 
-import org.w3c.dom.Text;
-
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
     String TAG=LoginActivity.class.getSimpleName();
     public static GoogleApiClient mGoogleApiClient;
@@ -36,6 +31,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private SignInButton buttonSignIn;
     private static final int RC_SIGN_IN = 007;
     AccountInformation accountInformation;
+    String firstName;
+    String[] parts;
 
     TextView skipThisView;
     @Override
@@ -80,21 +77,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             String personPhotoUrl;
             if(acct.getPhotoUrl()!=null)
             {
-                personPhotoUrl = acct.getPhotoUrl().toString();
+                accountInformation.setUrl(acct.getPhotoUrl().toString());
             }
             else
             {
-                personPhotoUrl="https://developers.google.com/experts/img/user/user-default.png";
+                accountInformation.setUrl("https://developers.google.com/experts/img/user/user-default.png");
             }
             String personLastName=acct.getFamilyName();
             Log.v("Last Name",personLastName);
-            accountInformation.setFullName(acct.getDisplayName());
+            parts=acct.getDisplayName().trim().split(" ");
+            accountInformation.setFirstName(parts[0]);
             accountInformation.setEmail(acct.getEmail());
             accountInformation.setLastName(acct.getFamilyName());
-            Intent toMainActivity=new Intent(this, HomeActivity.class);
-            toMainActivity.putExtra("personName",personName);
-            toMainActivity.putExtra("personPhotoUrl",personPhotoUrl);
-            Log.e(TAG, "Name: " + personName + ",Image: " + personPhotoUrl);
+            Intent toMainActivity=new Intent(this, PhoneNoActivity.class);
             startActivity(toMainActivity);
         }
     }

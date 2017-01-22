@@ -182,6 +182,7 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
                     if(toLocationSpinner.getSelectedItem().toString().equals("Choose your location"))
                     {
                         Toast.makeText(getActivity(),"Enter your journey's to location",Toast.LENGTH_SHORT).show();
+                        //Remove this toast instead a text view which shows the error and make it invisible when the error goes
                     }
                     break;
                 }

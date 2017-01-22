@@ -23,18 +23,18 @@
         android:text="Show my last name ?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_a_trip_switch_last_name" />
+        android:id="@+id/settings_switch_last_name" />
 
     <Switch
         android:text="Show my email to other?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_a_trip_switch_email" />
+        android:id="@+id/settings_switch_email" />
 
     <Switch
         android:text="Show my phone no. to others ?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/add_a_trip_switch_phone_no" />
+        android:id="@+id/settings_switch_phone_no" />
 
 </LinearLayout>

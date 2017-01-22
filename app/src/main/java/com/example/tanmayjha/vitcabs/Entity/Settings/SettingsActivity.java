@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
@@ -26,13 +27,58 @@ public class SettingsActivity extends AppCompatActivity {
 //        ActionBar actionBar = getActionBar();
 //        actionBar.setDisplayHomeAsUpEnabled(true);
 
-        lastNameSwitch=(Switch)findViewById(R.id.add_a_trip_switch_last_name);
-        emailSwitch=(Switch)findViewById(R.id.add_a_trip_switch_email);
+        lastNameSwitch=(Switch)findViewById(R.id.settings_switch_last_name);
+        emailSwitch=(Switch)findViewById(R.id.settings_switch_email);
+        phoneNoSwitch=(Switch)findViewById(R.id.settings_switch_phone_no);
 
         if(!accountInformation.getLastName().trim().isEmpty()) {
             emailSwitch.setText("Show my email(" + accountInformation.getEmail() + ")to other?");
             lastNameSwitch.setText("Show my last name(" + accountInformation.getLastName() + ")?");
+            phoneNoSwitch.setText("Show my phone no("+accountInformation.getPhoneNo()+")?");
         }
+
+        emailSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    accountInformation.setEmailEnabled(true);
+                }
+                else
+                {
+                    accountInformation.setEmailEnabled(false);
+                }
+            }
+        });
+
+        lastNameSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    accountInformation.setLastNameEnabled(true);
+                }
+                else
+                {
+                    accountInformation.setLastNameEnabled(false);
+                }
+            }
+        });
+
+        phoneNoSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    accountInformation.setPhoneNoEnabled(true);
+                }
+                else
+                {
+                    accountInformation.setPhoneNoEnabled(false);
+                }
+            }
+        });
+
 
     }
 
