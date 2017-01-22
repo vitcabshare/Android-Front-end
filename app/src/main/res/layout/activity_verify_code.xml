@@ -21,7 +21,8 @@
             android:hint="Enter the verification code"
             android:gravity="center_horizontal"
             android:id="@+id/verify_code"
-            android:ems="15">
+            android:ems="15"
+            android:inputType="phone">
         </com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText>
     </android.support.design.widget.TextInputLayout>
 

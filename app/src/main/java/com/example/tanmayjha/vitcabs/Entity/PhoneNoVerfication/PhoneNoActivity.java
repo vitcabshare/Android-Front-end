@@ -23,7 +23,7 @@ public class PhoneNoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_no);
-        getActionBar().setTitle("Verify Profile");
+        getSupportActionBar().setTitle("Verify Profile");
     }
 
     @Override
@@ -47,7 +47,7 @@ public class PhoneNoActivity extends AppCompatActivity {
                 if(phoneNo.getText().toString().trim().isEmpty())
                 {
                     phoneNoLayout.setErrorEnabled(true);
-                    phoneNoLayout.setError("Enter the text first");
+                    phoneNoLayout.setError("Enter the phone no first");
                     if(phoneNo.requestFocus())
                     {
                         //not sure what is the use of below code

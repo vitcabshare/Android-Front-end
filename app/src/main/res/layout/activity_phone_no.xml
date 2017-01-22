@@ -34,12 +34,14 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/verify_profile_phone_no_layout">
+        android:id="@+id/verify_profile_phone_no_layout"
+        android:layout_marginTop="10dp">
         <com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText
             style="@style/BodyFont"
             android:id="@+id/verify_profile_phone_no"
             android:hint="Enter your Phone no."
-            android:ems="10" />
+            android:ems="10"
+            android:inputType="phone"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -50,5 +52,5 @@
         android:text="Next"
         android:id="@+id/verify_profile_phone_button_next"
         android:textColor="#FFF"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

@@ -69,14 +69,13 @@ public class HomeActivity extends AppCompatActivity
 
         replaceFragment(new ShowAllTravellers(),"All Travellers");
 
-        Intent fromLogin=getIntent();
-        personName=accountInformation.getFullName();
+        personName=accountInformation.getFirstName();
         personPhotoUrl=accountInformation.getUrl();
         Log.v("Person's name",personName);
         View hView =  navigationView.getHeaderView(0);
         TextView name=(TextView)hView.findViewById(R.id.person_name);
         CircleImageView personImage=(CircleImageView)hView.findViewById(R.id.person_image);
-        name.setText(personName);
+        name.setText(personName+accountInformation.getLastName());
         Glide.with(getApplicationContext()).load(personPhotoUrl).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.ALL).into(personImage);
     }
 
@@ -84,8 +83,6 @@ public class HomeActivity extends AppCompatActivity
     public void onStart()
     {
         super.onStart();
-        String title="Welcome";
-        getSupportActionBar().setTitle(title);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         mGoogleApiClient = new GoogleApiClient.Builder(this).enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
         OptionalPendingResult<GoogleSignInResult> opr =
@@ -118,7 +115,7 @@ public class HomeActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
             Fragment f =getSupportFragmentManager().findFragmentById(R.id.container);
-            if(f instanceof WelcomeFragment)
+            if(f instanceof ShowAllTravellers)
             {
                 finishAffinity();
             }
