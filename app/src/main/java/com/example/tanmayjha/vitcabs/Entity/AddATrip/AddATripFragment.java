@@ -41,7 +41,6 @@ import static android.R.attr.button;
  */
 public class AddATripFragment extends Fragment implements View.OnClickListener{
 
-
     private Calendar myCalendar;
     MontserratEditText dateEditText,timeEditText,flightNoEditText;
     DatePickerDialog.OnDateSetListener dateSetListener;
@@ -50,6 +49,8 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
     String lastName,phoneNo,email;
     AccountInformation accountInformation;
     Spinner fromLocationSpinner,toLocationSpinner;
+    TextView fromLocationError,toLocationError;
+    Boolean flag;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,6 +75,9 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
 
         fromLocationSpinner=(Spinner)view.findViewById(R.id.add_a_trip_from_location);
         toLocationSpinner=(Spinner)view.findViewById(R.id.add_a_trip_to_location);
+
+        fromLocationError=(TextView)view.findViewById(R.id.add_a_trip_spinner_from_location_error);
+        toLocationError=(TextView)view.findViewById(R.id.add_a_trip_spinner_to_location_error);
 
         resetButton.setOnClickListener(this);
         doneButton.setOnClickListener(this);
@@ -177,12 +181,36 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
 
                     if(fromLocationSpinner.getSelectedItem().toString().equals("Choose your location"))
                     {
-                        Toast.makeText(getActivity(),"Enter your journey's from location",Toast.LENGTH_SHORT).show();
+                        fromLocationError.setVisibility(View.VISIBLE);
+                        toLocationError.setVisibility(View.INVISIBLE);
+                        flag=true;
+                    }
+                    else {
+                        if(!flag) {
+                            fromLocationError.setVisibility(View.GONE);
+                            toLocationError.setVisibility(View.GONE);
+                        }
+                        else
+                            flag=false;
                     }
                     if(toLocationSpinner.getSelectedItem().toString().equals("Choose your location"))
                     {
-                        Toast.makeText(getActivity(),"Enter your journey's to location",Toast.LENGTH_SHORT).show();
-                        //Remove this toast instead a text view which shows the error and make it invisible when the error goes
+                        toLocationError.setVisibility(View.VISIBLE);
+                        fromLocationError.setVisibility(View.INVISIBLE);
+
+                    }
+                    else {
+                        if(!flag) {
+                            toLocationError.setVisibility(View.GONE);
+                            fromLocationError.setVisibility(View.GONE);
+                        }
+                        else
+                            flag=false;
+                    }
+                    if(toLocationSpinner.getSelectedItem().toString().equals("Choose your location") && fromLocationSpinner.getSelectedItem().toString().equals("Choose your location"))
+                    {
+                        toLocationError.setVisibility(View.VISIBLE);
+                        fromLocationError.setVisibility(View.VISIBLE);
                     }
                     break;
                 }
@@ -194,7 +222,7 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface arg0, int arg1) {
-                                    Toast.makeText(getActivity(),"Request Created. You will shortly get a call",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getActivity(),"Request Created.",Toast.LENGTH_LONG).show();
                                     ShowAllTravellers showAllTravellers=new ShowAllTravellers();
                                     FragmentChangeListener fc=(FragmentChangeListener)getActivity();
                                     fc.replaceFragmentFromFragments(showAllTravellers,"All Trips");

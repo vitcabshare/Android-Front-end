@@ -1,9 +1,11 @@
 package com.example.tanmayjha.vitcabs.Entity.PhoneNoVerfication;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -29,6 +31,7 @@ public class VerifyCodeActivity extends AppCompatActivity {
         code=(MontserratEditText)findViewById(R.id.verify_code);
         verify=(Button)findViewById(R.id.verify_code_verify);
         getSupportActionBar().setTitle("Verification");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,5 +51,19 @@ public class VerifyCodeActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                Intent intent = new Intent(this, PhoneNoActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

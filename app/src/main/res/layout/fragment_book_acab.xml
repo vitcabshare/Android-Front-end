@@ -127,6 +127,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <TextView
+            style="@style/BodyFont"
+            android:text="Enter From location first"
+            android:textColor="#ff0000"
+            android:id="@+id/book_a_cab_spinner_from_location_error"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <TextView
+            style="@style/BodyFont"
+            android:text="Enter to location first"
+            android:id="@+id/book_a_cab_spinner_to_location_error"
+            android:textColor="#ff0000"
+            android:visibility="gone"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp">
         <android.support.design.widget.TextInputLayout
             android:id="@+id/book_a_cab_input_date"

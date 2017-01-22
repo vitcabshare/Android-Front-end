@@ -4,6 +4,7 @@ package com.example.tanmayjha.vitcabs.Entity.BookACab;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
@@ -42,6 +43,8 @@ public class BookACabFragment extends Fragment {
     Spinner fromLocation,toLocation;
     private Calendar myCalendar;
     DatePickerDialog.OnDateSetListener dateSetListener;
+    TextView fromLocationError,toLocationError;
+    Boolean flag;
     public BookACabFragment() {
         // Required empty public constructor
     }
@@ -70,6 +73,9 @@ public class BookACabFragment extends Fragment {
         timeOfTravelEditText=(MontserratEditText)view.findViewById(R.id.book_a_cab_time);
         pickUpLocationEditText=(MontserratEditText)view.findViewById(R.id.book_a_cab_pick_up_location);
         anyOtherInfoEditText=(MontserratEditText)view.findViewById(R.id.book_a_cab_any_other_information);
+
+        fromLocationError=(TextView)view.findViewById(R.id.book_a_cab_spinner_from_location_error);
+        toLocationError=(TextView)view.findViewById(R.id.book_a_cab_spinner_to_location_error);
 
         nameLayout=(TextInputLayout)view.findViewById(R.id.book_a_cab_input_name);
         contactLayout=(TextInputLayout)view.findViewById(R.id.book_a_cab_input_contact_no);
@@ -240,13 +246,39 @@ public class BookACabFragment extends Fragment {
                     {
                         pickUpLayout.setErrorEnabled(false);
                     }
+
                     if(fromLocation.getSelectedItem().toString().equals("Choose your location"))
                     {
-                        Toast.makeText(getActivity(),"Enter from location of your trip",Toast.LENGTH_SHORT).show();
+                        fromLocationError.setVisibility(View.VISIBLE);
+                        toLocationError.setVisibility(View.INVISIBLE);
+                        flag=true;
+                    }
+                    else {
+                        if(!flag) {
+                            fromLocationError.setVisibility(View.GONE);
+                            toLocationError.setVisibility(View.GONE);
+                        }
+                        else
+                            flag=false;
+
                     }
                     if(toLocation.getSelectedItem().toString().equals("Choose your location"))
                     {
-                        Toast.makeText(getActivity(),"Enter to location of your trip",Toast.LENGTH_SHORT).show();
+                        toLocationError.setVisibility(View.VISIBLE);
+                        fromLocationError.setVisibility(View.INVISIBLE);
+                    }
+                    else {
+                        if(!flag) {
+                            toLocationError.setVisibility(View.GONE);
+                            fromLocationError.setVisibility(View.GONE);
+                        }
+                        else
+                            flag=false;
+                    }
+                    if(toLocation.getSelectedItem().toString().equals("Choose your location") && fromLocation.getSelectedItem().toString().equals("Choose your location"))
+                    {
+                        toLocationError.setVisibility(View.VISIBLE);
+                        fromLocationError.setVisibility(View.VISIBLE);
                     }
                 }
                 else {
@@ -283,18 +315,7 @@ public class BookACabFragment extends Fragment {
         priceCardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getActivity())
-                        .setTitle("Price Tag")
-                        .setMessage("\n" +
-                                "Car Type\tChennai Airport\tBangalore Airport\tPondicherry\n" +
-                                "Non AC\tAC\tNon AC\tAC\tNon AC\tAC\n" +
-                                "Indica / Figo\t2070\t2270\t4099\t4299\t2600\t2900\n" +
-                                "Swift Desire / Etios\t2300\t2500\t4400\t4700\t2900\t3300\n" +
-                                "Tavera\t3100\t3400\t6099\t6499\t3999\t4199\n" +
-                                "Innova\t3499\t3799\t8199\t8499\t4599\t4999\n" +
-                                "Traveller\t4999\t5299\t13399\t13899\t7999\t8699\n" +
-                                "OK\n")
-                        .show();
+                startActivity(new Intent(getActivity(),PriceDetailActivity.class));
             }
         });
     }

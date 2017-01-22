@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,GoogleApiClient.OnConnectionFailedListener,FragmentChangeListener {
 
     String personName="User";
+    int id;
     GoogleApiClient mGoogleApiClient;
     String TAG=HomeActivity.class.getSimpleName();
     String personPhotoUrl;
@@ -66,16 +67,20 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        replaceFragment(new ShowAllTravellers(),"All Travellers");
-
+        if(getIntent().getIntExtra("fragment",0)==1)
+        {
+            replaceFragment(new BookACabFragment(),"Book A Cab");
+        }
+        else {
+            replaceFragment(new ShowAllTravellers(), "All Travellers");
+        }
         personName=accountInformation.getFirstName();
         personPhotoUrl=accountInformation.getUrl();
         Log.v("Person's name",personName);
         View hView =  navigationView.getHeaderView(0);
         TextView name=(TextView)hView.findViewById(R.id.person_name);
         CircleImageView personImage=(CircleImageView)hView.findViewById(R.id.person_image);
-        name.setText(personName+accountInformation.getLastName());
+        name.setText(personName+" "+accountInformation.getLastName());
         Glide.with(getApplicationContext()).load(personPhotoUrl).thumbnail(0.5f).diskCacheStrategy(DiskCacheStrategy.ALL).into(personImage);
     }
 
@@ -149,35 +154,56 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_add_a_trip) {
-            replaceFragment(new AddATripFragment(),"Add a Trip");
-        } else if (id == R.id.nav_pool_request) {
-            replaceFragment(new PoolRequestFragment(),"Pool Request");
-        } else if (id == R.id.nav_show_all_trip) {
-            replaceFragment(new ShowAllTravellers(),"All Travellers");
-        } else if (id == R.id.nav_book_a_cab) {
-            replaceFragment(new BookACabFragment(),"Book A Cab");
-        } else if (id == R.id.nav_about){
-            replaceFragment(new AboutUsFragment(),"About Us Fragment");
-        }
-        else if (id == R.id.nav_log_out){
-
-            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                    new ResultCallback<Status>() {
-                        @Override
-                        public void onResult(@NonNull Status status) {
-                        }
-                    }
-            );
-            Intent intent=new Intent(this,LoginActivity.class);
-            startActivity(intent);
-        }
-        //TODO: Sol
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        id = item.getItemId();
+        final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                if (id == R.id.nav_add_a_trip) {
+                    replaceFragment(new AddATripFragment(),"Add a Trip");
+                } else if (id == R.id.nav_pool_request) {
+                    replaceFragment(new PoolRequestFragment(),"Pool Request");
+                } else if (id == R.id.nav_show_all_trip) {
+                    replaceFragment(new ShowAllTravellers(),"All Travellers");
+                } else if (id == R.id.nav_book_a_cab) {
+                    replaceFragment(new BookACabFragment(),"Book A Cab");
+                } else if (id == R.id.nav_about){
+                    replaceFragment(new AboutUsFragment(),"About Us Fragment");
+                }
+                else if (id == R.id.nav_log_out){
+
+                    Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                            new ResultCallback<Status>() {
+                                @Override
+                                public void onResult(@NonNull Status status) {
+                                }
+                            }
+                    );
+                    Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+
+            }
+        });
+
+
+        // Handle navigation view item clicks here.
+
         return true;
     }
 

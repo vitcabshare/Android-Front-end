@@ -23,6 +23,7 @@
             style="@style/BodyFont"
             android:text="Last Name: Jha"
             android:id="@+id/phone_no_last_name"
+            android:gravity="end"
             android:layout_weight="1"/>
     </LinearLayout>
         <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
