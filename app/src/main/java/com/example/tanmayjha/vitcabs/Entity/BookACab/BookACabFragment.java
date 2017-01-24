@@ -89,9 +89,9 @@ public class BookACabFragment extends Fragment {
         fromLocation=(Spinner)view.findViewById(R.id.book_a_cab_spinner_from_location);
         toLocation=(Spinner)view.findViewById(R.id.book_a_cab_spinner_to_location);
         
-        nameEditText.setText(accountInformation.getFirstName()+accountInformation.getLastName()
-        );
+        nameEditText.setText(accountInformation.getFirstName()+accountInformation.getLastName());
         emailEditText.setText(accountInformation.getEmail());
+        contactEditText.setError(accountInformation.getPhoneNo());
 
         myCalendar = Calendar.getInstance();
 

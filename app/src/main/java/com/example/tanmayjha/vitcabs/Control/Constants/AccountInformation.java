@@ -5,7 +5,7 @@ package com.example.tanmayjha.vitcabs.Control.Constants;
  */
 
 public class AccountInformation {
-    static String lastName="",phoneNo="",email="",FirstName="",url="";
+    static String lastName="Guest Login",phoneNo="",email="",FirstName="",url="";
     static boolean lastNameEnabled=false,phoneNoEnabled=false,emailEnabled=false;
 
     public static void setFirstName(String firstName) {

@@ -17,13 +17,7 @@
             android:name=".Entity.LogIn.LoginActivity"
             android:label="@string/title_activity_login_in"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Entity.IntroSlider.IntroSliderActivity"
             android:label="Intro Slider"
@@ -32,14 +26,21 @@
         <activity
             android:name=".Entity.SplashScreen.SplashScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Entity.Settings.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Entity.PhoneNoVerfication.PhoneNoActivity" />
         <activity android:name=".Entity.PhoneNoVerfication.VerifyCodeActivity" />
-        <activity android:name=".Entity.BookACab.PriceDetailActivity"></activity>
+        <activity android:name=".Entity.BookACab.PriceDetailActivity" />
+        <activity android:name=".Entity.AddATrip.AddATripResultActivity"></activity>
     </application>
 
 </manifest>

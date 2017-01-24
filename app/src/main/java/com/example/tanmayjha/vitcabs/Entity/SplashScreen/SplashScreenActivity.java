@@ -10,7 +10,7 @@ import com.example.tanmayjha.vitcabs.Entity.IntroSlider.IntroSliderActivity;
 import com.example.tanmayjha.vitcabs.R;
 
 public class SplashScreenActivity extends Activity {
-    private final int SPLASH_DISPLAY_DURATION = 3000;
+    private final int SPLASH_DISPLAY_DURATION = 4000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

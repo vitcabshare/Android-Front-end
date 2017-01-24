@@ -79,7 +79,7 @@
         android:entries="@array/Suggestions"/>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:id="@+id/input_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -89,7 +89,7 @@
             android:ems="8"
             android:inputType="text"
             android:hint="Please write here..."
-            android:layout_gravity="left"/>
+            android:layout_gravity="center_horizontal"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button

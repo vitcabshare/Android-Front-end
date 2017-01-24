@@ -18,9 +18,11 @@
             style="@style/BodyFont"
             android:text="First Name: Tanmay"
             android:id="@+id/phone_no_first_name"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:layout_width="0dp"/>
         <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
             style="@style/BodyFont"
+            android:layout_width="0dp"
             android:text="Last Name: Jha"
             android:id="@+id/phone_no_last_name"
             android:gravity="end"

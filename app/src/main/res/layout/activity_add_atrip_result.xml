@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_atrip_result"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripResultActivity">
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/HeadingFont"
+        android:text="The following data is entered :"
+        
+        android:layout_gravity="left" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+            <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                style="@style/BodyFont"
+                android:id="@+id/add_a_trip_result_from"
+                android:text="From: "
+                android:layout_width="0dp"
+                android:layout_gravity="left"
+                android:layout_weight="1"/>
+            <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+                style="@style/BodyFont"
+                android:id="@+id/add_a_trip_result_to"
+                android:text="To: "
+                android:layout_width="0dp"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+            style="@style/BodyFont"
+            android:id="@+id/add_a_trip_result_date_of_travel"
+            android:text="Date of travel"
+            android:layout_width="0dp"
+            android:layout_gravity="left"
+            android:layout_weight="1"/>
+        <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+            style="@style/BodyFont"
+            android:id="@+id/add_a_trip_result_time_of_travel"
+            android:text="Time of travel:"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            />
+    </LinearLayout>
+
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/BodyFont"
+        android:layout_marginTop="5dp"
+        android:id="@+id/add_a_trip_result_flight_no"
+        android:text="Flight no/train no:"
+        android:layout_gravity="left" />
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/HeadingFont"
+        android:layout_marginTop="5dp"
+        android:text="Note: "
+        android:layout_gravity="left" />
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/BodyFont"
+        android:layout_marginTop="5dp"
+        android:id="@+id/add_a_trip_result_last_name_visibility"
+        android:text="Email(tanmay.jha1@gmail.com) will be visible to others."
+        android:layout_gravity="left" />
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/BodyFont"
+        android:layout_marginTop="5dp"
+        android:id="@+id/add_a_trip_result_email_visibility"
+        android:text="Last name(Jha) will be visible to others. "
+        android:layout_gravity="left" />
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/BodyFont"
+        android:layout_marginTop="5dp"
+        android:id="@+id/add_a_trip_result_phone_no_visibility"
+        android:text="Phone no(9790048621) will be visible to others."
+        android:layout_gravity="left" />
+
+    <com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView
+        style="@style/HeadingFont"
+        android:layout_marginTop="10dp"
+        android:text="If you want to change the visibility settings. Go to Settings and change accordingly."
+        android:layout_gravity="left"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/add_a_trip_result_button_back"
+            android:background="@drawable/buttonlayout"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textColor="#FFF"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:id="@+id/add_a_trip_result_button_confirm"
+            android:background="@drawable/buttonlayout"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFF"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>

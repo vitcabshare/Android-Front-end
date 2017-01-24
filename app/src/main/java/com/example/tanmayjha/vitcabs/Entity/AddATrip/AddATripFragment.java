@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 import com.example.tanmayjha.vitcabs.Boundary.Interface.FragmentChangeListener;
 import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
 import com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText;
+import com.example.tanmayjha.vitcabs.Entity.BookACab.BookACabFragment;
 import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellers;
 import com.example.tanmayjha.vitcabs.R;
 
@@ -35,6 +37,7 @@ import java.util.Locale;
 import java.util.Locale;
 
 import static android.R.attr.button;
+import static android.R.attr.start;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,6 +67,7 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
     {
         super.onStart();
         View view=getView();
+
         dateEditText=(MontserratEditText)view.findViewById(R.id.add_a_trip_date);
         timeEditText=(MontserratEditText)view.findViewById(R.id.add_a_trip_time);
         resetButton=(Button)view.findViewById(R.id.add_a_trip_button_reset);
@@ -148,6 +152,8 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
                 dateEditText.setText("");
                 timeEditText.setText("");
                 flightNoEditText.setText("");
+                fromLocationSpinner.setSelection(0);
+                toLocationSpinner.setSelection(0);
                 break;
             }
             case R.id.add_a_trip_button_done:
@@ -215,6 +221,8 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
                     break;
                 }
                 else {
+
+                    /*
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
                     alertDialogBuilder.setMessage("Are you sure!? Or you wanna check again?");
 
@@ -240,6 +248,15 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
                     alertDialog.setCancelable(true);
                     alertDialog.show();
                     break;
+                    */
+
+                    Intent intent=new Intent(getActivity(),AddATripResultActivity.class);
+                    intent.putExtra("date",dateEditText.getText().toString());
+                    intent.putExtra("time",timeEditText.getText().toString());
+                    intent.putExtra("flighno",flightNoEditText.getText().toString());
+                    intent.putExtra("fromLocation",fromLocationSpinner.getSelectedItem().toString());
+                    intent.putExtra("toLocation",toLocationSpinner.getSelectedItem().toString());
+                    startActivity(intent);
                 }
             }
         }
