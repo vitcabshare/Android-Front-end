@@ -14,6 +14,7 @@ import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
 import com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText;
 import com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView;
 import com.example.tanmayjha.vitcabs.Entity.LogIn.LoginActivity;
+import com.example.tanmayjha.vitcabs.Entity.Navigation.HomeActivity;
 import com.example.tanmayjha.vitcabs.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -53,6 +54,7 @@ public class PhoneNoActivity extends AppCompatActivity implements GoogleApiClien
             // is available immediately. This likely means the current ID token is already
             // fresh and can be sent to your server.
             GoogleSignInResult result = opr.get();
+            //startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         } else {
             // If the user has not previously signed in on this device or the sign-in has expired,
             // this asynchronous branch will attempt to sign in the user silently and get a valid
