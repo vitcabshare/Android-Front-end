@@ -2,42 +2,41 @@ package com.example.tanmayjha.vitcabs.Entity.AddATrip;
 
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.example.tanmayjha.vitcabs.Boundary.Interface.FragmentChangeListener;
 import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
 import com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText;
-import com.example.tanmayjha.vitcabs.Entity.BookACab.BookACabFragment;
-import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellers;
 import com.example.tanmayjha.vitcabs.R;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.Locale;
-
-import static android.R.attr.button;
-import static android.R.attr.start;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,12 +53,17 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
     Spinner fromLocationSpinner,toLocationSpinner;
     TextView fromLocationError,toLocationError;
     Boolean flag;
+    private GoogleMap mMap;
+    SupportMapFragment mMapFragment;
+    Marker VITVelloreFromMarker,VITChennaiFromMarker,chennaiAirportFromMarker,bangaloreAirportFromMarker,chennaiRailwayStationFromMarker,katpadiRailwayStationFromMarker,pondicherryFromMarker,kodaikanalFromMarker,VITVelloreToMarker,VITChennaiToMarker,chennaiAirportToMarker,bangaloreAirportToMarker,chennaiRailwayStationToMarker,katpadiRailwayStationToMarker,pondicherryToMarker,kodaikanalToMarker,fromMarker,toMarker;
+    Polyline line;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_a_trip, container, false);
+
     }
 
     @Override
@@ -67,6 +71,7 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
     {
         super.onStart();
         View view=getView();
+        mMapFragment=(SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map);
 
         dateEditText=(MontserratEditText)view.findViewById(R.id.add_a_trip_date);
         timeEditText=(MontserratEditText)view.findViewById(R.id.add_a_trip_time);
@@ -134,6 +139,294 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
             mTimePicker.show();
         }
     });
+
+        mMapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                Log.v("Map Fragment","check");
+                mMap=googleMap;
+                LatLng coordinate = new LatLng(12.969129,79.155787);
+                CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate,6);
+                googleMap.animateCamera(yourLocation);
+            }
+        });
+
+        fromLocationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+
+                if (line != null) {
+                    line.remove();
+                    //toMarker=null;
+                }
+
+                if (id == 1) {
+                    VITVelloreFromMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(12.9693, 79.1559))
+                            .title("VIT Vellore"));
+                    LatLng coordinate = new LatLng(12.9693, 79.1559);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    fromMarker=VITVelloreFromMarker;
+                } else {
+                    if(VITVelloreFromMarker!=null)
+                    VITVelloreFromMarker.remove();
+                }
+                if (id == 2) {
+                    VITChennaiFromMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(12.842222, 80.154167))
+                            .title("VIT Chennai"));
+                    LatLng coordinate = new LatLng(12.842222, 80.154167);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    fromMarker=VITChennaiFromMarker;
+                } else {
+                    if(VITChennaiFromMarker!=null)
+                    VITChennaiFromMarker.remove();
+                }
+                if (id == 3) {
+                    chennaiAirportFromMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(12.9941, 80.1709))
+                            .title("Chennai Airport"));
+                    LatLng coordinate = new LatLng(12.9941, 80.1709);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    fromMarker=chennaiAirportFromMarker;
+                } else {
+                    if(chennaiAirportFromMarker!=null)
+                    chennaiAirportFromMarker.remove();
+                }
+                if (id == 4) {
+                    bangaloreAirportFromMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(13.1986, 77.7066))
+                            .title("Bangalore Airport"));
+                    LatLng coordinate = new LatLng(13.1986, 77.7066);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    fromMarker=bangaloreAirportFromMarker;
+                } else {
+                    if(bangaloreAirportFromMarker!=null)
+                        bangaloreAirportFromMarker.remove();
+                }
+                if (id == 5) {
+                    chennaiRailwayStationFromMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(13.0823, 80.2754))
+                            .title("Chennai Railway Station"));
+                    LatLng coordinate = new LatLng(13.0823, 80.2754);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    fromMarker=chennaiRailwayStationFromMarker;
+                } else {
+                    if(chennaiRailwayStationFromMarker!=null)
+                    chennaiRailwayStationFromMarker.remove();
+                }
+                if (id == 6) {
+                    katpadiRailwayStationFromMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(12.9722, 79.1384))
+                            .title("Katpadi Railway Station"));
+                    LatLng coordinate = new LatLng(12.9722, 79.1384);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    fromMarker=katpadiRailwayStationFromMarker;
+                } else {
+                    if(katpadiRailwayStationFromMarker!=null)
+                    katpadiRailwayStationFromMarker.remove();
+                }
+                if (id == 7) {
+                    pondicherryFromMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(11.9139, 79.8145))
+                            .title("Pondicherry"));
+                    LatLng coordinate = new LatLng(11.9139, 79.8145);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    fromMarker=pondicherryFromMarker;
+                } else {
+                    if(pondicherryFromMarker!=null)
+                    pondicherryFromMarker.remove();
+                }if (id == 8) {
+                        kodaikanalFromMarker=mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(10.2381, 77.4892))
+                                .title("Kodaikanal"));
+                        LatLng coordinate = new LatLng(10.2381, 77.4892);
+                        CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                        mMap.animateCamera(yourLocation);
+                    fromMarker=kodaikanalFromMarker;
+                    }
+                else {
+                    if(kodaikanalFromMarker!=null)
+                    kodaikanalFromMarker.remove();
+
+                }
+
+                if(toMarker!=null)
+                {
+                    LatLng fromlatLng=fromMarker.getPosition();
+                    double fromLatitude=fromlatLng.latitude;
+                    double fromLongitude=fromlatLng.longitude;
+
+                    LatLng tolatlng=toMarker.getPosition();
+                    double toLatitude=tolatlng.latitude;
+                    double toLogitude=tolatlng.longitude;
+
+                    line=mMap.addPolyline(new PolylineOptions().add(new LatLng(fromLatitude,
+                                            fromLongitude),
+                                    new LatLng(toLatitude,toLogitude))
+                                    .width(5).color(Color.RED));
+//                    if(fromMarker!=null)
+//                        fromMarker=null;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+
+        toLocationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+
+                if (line != null) {
+                    line.remove();
+                    //toMarker=null;
+                }
+
+                if (id == 1) {
+                    VITVelloreToMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(12.9693, 79.1559))
+                            .title("VIT Vellore"));
+                    LatLng coordinate = new LatLng(12.9693, 79.1559);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    toMarker=VITVelloreToMarker;
+                } else {
+                    if(VITVelloreToMarker!=null)
+                        VITVelloreToMarker.remove();
+                }
+                if (id == 2) {
+                    VITChennaiToMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(12.842222, 80.154167))
+                            .title("VIT Chennai"));
+                    LatLng coordinate = new LatLng(12.842222, 80.154167);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    toMarker=VITChennaiToMarker;
+                } else {
+                    if(VITChennaiToMarker!=null)
+                        VITChennaiToMarker.remove();
+                }
+                if (id == 3) {
+                    chennaiAirportToMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(12.9941, 80.1709))
+                            .title("Chennai Airport"));
+                    LatLng coordinate = new LatLng(12.9941, 80.1709);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    toMarker=chennaiAirportToMarker;
+                } else {
+                    if(chennaiAirportToMarker!=null)
+                        chennaiAirportToMarker.remove();
+                }
+                if (id == 4) {
+                    bangaloreAirportToMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(13.1986, 77.7066))
+                            .title("Bangalore Airport"));
+                    LatLng coordinate = new LatLng(13.1986, 77.7066);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    toMarker=bangaloreAirportToMarker;
+                } else {
+                    if(bangaloreAirportToMarker!=null)
+                        bangaloreAirportToMarker.remove();
+                }
+                if (id == 5) {
+                    chennaiRailwayStationToMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(13.0823, 80.2754))
+                            .title("Chennai Railway Station"));
+                    LatLng coordinate = new LatLng(13.0823, 80.2754);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    toMarker=chennaiRailwayStationToMarker;
+                } else {
+                    if(chennaiRailwayStationToMarker!=null)
+                        chennaiRailwayStationToMarker.remove();
+                }
+                if (id == 6) {
+                    katpadiRailwayStationToMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(12.9722, 79.1384))
+                            .title("Katpadi Railway Station"));
+                    LatLng coordinate = new LatLng(12.9722, 79.1384);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    toMarker=katpadiRailwayStationToMarker;
+                } else {
+                    if(katpadiRailwayStationToMarker!=null)
+                        katpadiRailwayStationToMarker.remove();
+                }
+                if (id == 7) {
+                    pondicherryToMarker = mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(11.9139, 79.8145))
+                            .title("Pondicherry"));
+                    LatLng coordinate = new LatLng(11.9139, 79.8145);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    toMarker=pondicherryToMarker;
+                } else {
+                    if(pondicherryToMarker!=null)
+                        pondicherryToMarker.remove();
+                }if (id == 8) {
+                    kodaikanalToMarker=mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(10.2381, 77.4892))
+                            .title("Kodaikanal"));
+                    LatLng coordinate = new LatLng(10.2381, 77.4892);
+                    CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 6);
+                    mMap.animateCamera(yourLocation);
+                    toMarker=kodaikanalToMarker;
+                }
+                else {
+                    if(kodaikanalToMarker!=null)
+                        kodaikanalToMarker.remove();
+                }
+
+
+                if(fromMarker!=null)
+                {
+                    LatLng fromlatLng=fromMarker.getPosition();
+                    double fromLatitude=fromlatLng.latitude;
+                    double fromLongitude=fromlatLng.longitude;
+
+                    LatLng tolatlng=toMarker.getPosition();
+                    double toLatitude=tolatlng.latitude;
+                    double toLogitude=tolatlng.longitude;
+
+                    line=mMap.addPolyline(new PolylineOptions().add(new LatLng(fromLatitude,
+                                    fromLongitude),
+                            new LatLng(toLatitude,toLogitude))
+                            .width(5).color(Color.RED));
+
+//                    if(toMarker!=null)
+//                        toMarker=null;
+                }
+                else{
+                    if(line!=null) {
+                        line.remove();
+                        //fromMarker=null;
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     //TODO:Add constraint for text inputlayout
@@ -231,7 +524,7 @@ public class AddATripFragment extends Fragment implements View.OnClickListener{
                                 @Override
                                 public void onClick(DialogInterface arg0, int arg1) {
                                     Toast.makeText(getActivity(),"Request Created.",Toast.LENGTH_LONG).show();
-                                    ShowAllTravellers showAllTravellers=new ShowAllTravellers();
+                                    ShowAllTravellersTabHolder showAllTravellers=new ShowAllTravellersTabHolder();
                                     FragmentChangeListener fc=(FragmentChangeListener)getActivity();
                                     fc.replaceFragmentFromFragments(showAllTravellers,"All Trips");
                                 }

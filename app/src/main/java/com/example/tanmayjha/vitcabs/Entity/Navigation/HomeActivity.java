@@ -27,8 +27,7 @@ import com.example.tanmayjha.vitcabs.Entity.BookACab.BookACabFragment;
 import com.example.tanmayjha.vitcabs.Entity.LogIn.LoginActivity;
 import com.example.tanmayjha.vitcabs.Entity.PoolRequest.PoolRequestFragment;
 import com.example.tanmayjha.vitcabs.Entity.Settings.SettingsActivity;
-import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellers;
-import com.example.tanmayjha.vitcabs.Entity.Welcome.WelcomeFragment;
+import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellersTabHolder;
 import com.example.tanmayjha.vitcabs.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -67,13 +66,7 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        if(getIntent().getIntExtra("fragment",0)==1)
-        {
-            replaceFragment(new BookACabFragment(),"Book A Cab");
-        }
-        else {
-            replaceFragment(new ShowAllTravellers(), "All Travellers");
-        }
+        replaceFragment(new ShowAllTravellersTabHolder(), "All Travellers");
         personName=accountInformation.getFirstName();
         personPhotoUrl=accountInformation.getUrl();
         Log.v("Person's name",personName);
@@ -120,7 +113,7 @@ public class HomeActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
             Fragment f =getSupportFragmentManager().findFragmentById(R.id.container);
-            if(f instanceof ShowAllTravellers)
+            if(f instanceof ShowAllTravellersTabHolder)
             {
                 finishAffinity();
             }
@@ -175,7 +168,7 @@ public class HomeActivity extends AppCompatActivity
                 } else if (id == R.id.nav_pool_request) {
                     replaceFragment(new PoolRequestFragment(),"Pool Request");
                 } else if (id == R.id.nav_show_all_trip) {
-                    replaceFragment(new ShowAllTravellers(),"All Travellers");
+                    replaceFragment(new ShowAllTravellersTabHolder(),"All Travellers");
                 } else if (id == R.id.nav_book_a_cab) {
                     replaceFragment(new BookACabFragment(),"Book A Cab");
                 } else if (id == R.id.nav_about){

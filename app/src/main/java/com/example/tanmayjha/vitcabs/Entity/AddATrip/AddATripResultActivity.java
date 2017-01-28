@@ -8,11 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.tanmayjha.vitcabs.Boundary.Interface.FragmentChangeListener;
 import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
 import com.example.tanmayjha.vitcabs.Control.Font.MontserratTextView;
 import com.example.tanmayjha.vitcabs.Entity.Navigation.HomeActivity;
-import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellers;
 import com.example.tanmayjha.vitcabs.R;
 
 public class AddATripResultActivity extends AppCompatActivity {
@@ -24,11 +22,13 @@ public class AddATripResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_atrip_result);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public void onStart() {
         super.onStart();
+
         from = (MontserratTextView) findViewById(R.id.add_a_trip_result_from);
         to = (MontserratTextView) findViewById(R.id.add_a_trip_result_to);
         date = (MontserratTextView) findViewById(R.id.add_a_trip_result_date_of_travel);
@@ -80,5 +80,21 @@ public class AddATripResultActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
             }
         });
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; go home
+                onBackPressed();
+//                Intent intent = new Intent(this, HomeActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

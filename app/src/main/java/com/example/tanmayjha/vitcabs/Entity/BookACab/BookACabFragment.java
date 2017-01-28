@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -24,7 +23,6 @@ import android.widget.Toast;
 import com.example.tanmayjha.vitcabs.Boundary.Interface.FragmentChangeListener;
 import com.example.tanmayjha.vitcabs.Control.Constants.AccountInformation;
 import com.example.tanmayjha.vitcabs.Control.Font.MontserratEditText;
-import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellers;
 import com.example.tanmayjha.vitcabs.Entity.Welcome.WelcomeFragment;
 import com.example.tanmayjha.vitcabs.R;
 
@@ -91,7 +89,7 @@ public class BookACabFragment extends Fragment {
         
         nameEditText.setText(accountInformation.getFirstName()+accountInformation.getLastName());
         emailEditText.setText(accountInformation.getEmail());
-        contactEditText.setError(accountInformation.getPhoneNo());
+        contactEditText.setText(accountInformation.getPhoneNo());
 
         myCalendar = Calendar.getInstance();
 
