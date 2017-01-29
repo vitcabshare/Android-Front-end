@@ -7,6 +7,29 @@ package com.example.tanmayjha.vitcabs.Control.Constants;
 public class AccountInformation {
     static String lastName="Guest Login",phoneNo="",email="",FirstName="",url="";
     static boolean lastNameEnabled=false,phoneNoEnabled=false,emailEnabled=false;
+    static boolean loginUsingGmail=false, loginUsingFacebook=false;
+
+    public static boolean isLoginUsingFacebook() {
+        return loginUsingFacebook;
+    }
+
+    public static void setLoginUsingFacebook(boolean loginUsingFacebook) {
+
+        AccountInformation.loginUsingFacebook = loginUsingFacebook;
+    }
+
+    public AccountInformation() {
+    }
+
+    public static void setLoginUsingGmail(boolean loginUsingGmail) {
+
+        AccountInformation.loginUsingGmail = loginUsingGmail;
+    }
+
+    public static boolean isLoginUsingGmail() {
+
+        return loginUsingGmail;
+    }
 
     public static void setFirstName(String firstName) {
         FirstName = firstName;
@@ -26,7 +49,7 @@ public class AccountInformation {
         return url;
     }
 
-    public AccountInformation(String FirstName, String lastName, String phoneNo, String email, boolean lastNameEnabled, boolean phoneNoEnabled, boolean emailEnabled, String url) {
+    public AccountInformation(String FirstName, String lastName, String phoneNo, String email, boolean lastNameEnabled, boolean phoneNoEnabled, boolean emailEnabled, String url,boolean loginUsingGmail,boolean loginUsingFacebook) {
         this.FirstName=FirstName;
         this.lastName=lastName;
         this.phoneNo=phoneNo;
@@ -35,6 +58,8 @@ public class AccountInformation {
         this.phoneNoEnabled=phoneNoEnabled;
         this.emailEnabled=emailEnabled;
         this.url=url;
+        this.loginUsingGmail=loginUsingGmail;
+        this.loginUsingFacebook=loginUsingFacebook;
         
     }
 

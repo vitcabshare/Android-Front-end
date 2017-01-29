@@ -68,6 +68,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login_in);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if(accountInformation.isLoginUsingFacebook()) {
+            LoginManager.getInstance().logOut();
+            accountInformation.setLoginUsingFacebook(false);
+        }
         facebookLoginButton=(LoginButton)findViewById(R.id.facebook_login);
         skipThisView=(TextView)findViewById(R.id.skip_this);
         skipThisView.setOnClickListener(this);
@@ -165,13 +169,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(requestCode==RC_SIGN_IN){
             GoogleSignInResult result=Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleSignInResult(result);
+            accountInformation.setLoginUsingGmail(true);
         }
         else {
             /*
             accountInformation.setFirstName(Profile.getCurrentProfile().getFirstName());
             accountInformation.setLastName(Profile.getCurrentProfile().getLastName());
             accountInformation.setEmail(Profile.getCurrentProfile().get);*/
-
+            accountInformation.setLoginUsingGmail(false);
             callbackManager.onActivityResult(requestCode, resultCode, data);
             GraphRequest request = GraphRequest.newMeRequest(
                     accessToken,

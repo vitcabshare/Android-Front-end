@@ -29,6 +29,8 @@ import com.example.tanmayjha.vitcabs.Entity.PoolRequest.PoolRequestFragment;
 import com.example.tanmayjha.vitcabs.Entity.Settings.SettingsActivity;
 import com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellersTabHolder;
 import com.example.tanmayjha.vitcabs.R;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -57,6 +59,9 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -176,6 +181,7 @@ public class HomeActivity extends AppCompatActivity
                 }
                 else if (id == R.id.nav_log_out){
 
+
                     Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                             new ResultCallback<Status>() {
                                 @Override
@@ -185,6 +191,7 @@ public class HomeActivity extends AppCompatActivity
                     );
                     Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(intent);
+                    accountInformation.setLoginUsingFacebook(true);
                 }
             }
 
