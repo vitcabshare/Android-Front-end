@@ -15,7 +15,7 @@ import com.example.tanmayjha.vitcabs.R;
  * A simple {@link Fragment} subclass.
  */
 public class PoolRequestFragment extends Fragment {
-    FloatingActionButton clearAllFab;
+    com.melnykov.fab.FloatingActionButton clearAllFab;
 
     public PoolRequestFragment() {
         // Required empty public constructor
@@ -31,7 +31,7 @@ public class PoolRequestFragment extends Fragment {
     public void onStart(){
         super.onStart();
         View view=getView();
-        clearAllFab = (FloatingActionButton)view.findViewById(R.id.clear_all_fab);
+        clearAllFab = (com.melnykov.fab.FloatingActionButton)view.findViewById(R.id.clear_all_fab);
         clearAllFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

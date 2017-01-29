@@ -68,10 +68,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login_in);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if(accountInformation.isLoginUsingFacebook()) {
-            LoginManager.getInstance().logOut();
-            accountInformation.setLoginUsingFacebook(false);
-        }
+        LoginManager.getInstance().logOut();
         facebookLoginButton=(LoginButton)findViewById(R.id.facebook_login);
         skipThisView=(TextView)findViewById(R.id.skip_this);
         skipThisView.setOnClickListener(this);
@@ -95,6 +92,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginResult.getRecentlyGrantedPermissions();
                 Toast.makeText(getApplicationContext(),loginResult.getAccessToken().getUserId(),Toast.LENGTH_SHORT).show();
                 Toast.makeText(getApplicationContext(),"Successful login",Toast.LENGTH_SHORT).show();
+                accountInformation.setLoginUsingFacebook(true);
             }
 
             @Override
@@ -172,51 +170,53 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             accountInformation.setLoginUsingGmail(true);
         }
         else {
-            /*
+            if(accountInformation.isLoginUsingFacebook()) {
+                /*
             accountInformation.setFirstName(Profile.getCurrentProfile().getFirstName());
             accountInformation.setLastName(Profile.getCurrentProfile().getLastName());
             accountInformation.setEmail(Profile.getCurrentProfile().get);*/
-            accountInformation.setLoginUsingGmail(false);
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-            GraphRequest request = GraphRequest.newMeRequest(
-                    accessToken,
-                    new GraphRequest.GraphJSONObjectCallback() {
-                        @Override
-                        public void onCompleted(
-                                final JSONObject object,
-                                GraphResponse response) {
-                            // Application code
-                            final JSONObject jsonObject = response.getJSONObject();
-                            String nombre = "";
-                            String email = "";
-                            String id = "";
-                            try {
-                                nombre = jsonObject.getString("name");
-                                email =  jsonObject.getString("email");
-                                parts=nombre.trim().split(" ");
-                                accountInformation.setFirstName(parts[0]);
-                                accountInformation.setLastName(parts[1]);
-                                accountInformation.setEmail(email);
-                                Toast.makeText(getApplicationContext(),Profile.getCurrentProfile().getFirstName(),Toast.LENGTH_SHORT).show();
-                                accountInformation.setUrl(Profile.getCurrentProfile().getProfilePictureUri(400,400).toString());
+                accountInformation.setLoginUsingGmail(false);
+                callbackManager.onActivityResult(requestCode, resultCode, data);
+                GraphRequest request = GraphRequest.newMeRequest(
+                        accessToken,
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(
+                                    final JSONObject object,
+                                    GraphResponse response) {
+                                // Application code
+                                final JSONObject jsonObject = response.getJSONObject();
+                                String nombre = "";
+                                String email = "";
+                                String id = "";
+                                try {
+                                    nombre = jsonObject.getString("name");
+                                    email =  jsonObject.getString("email");
+                                    parts=nombre.trim().split(" ");
+                                    accountInformation.setFirstName(parts[0]);
+                                    accountInformation.setLastName(parts[1]);
+                                    accountInformation.setEmail(email);
+                                    Toast.makeText(getApplicationContext(),Profile.getCurrentProfile().getFirstName(),Toast.LENGTH_SHORT).show();
+                                    accountInformation.setUrl(Profile.getCurrentProfile().getProfilePictureUri(400,400).toString());
 //                                    if (jsonObject.has("picture")) {
 //                                        String profilePicUrl = jsonObject.getJSONObject("picture").getJSONObject("data").getString("url");
 //                                        Bitmap profilePic = BitmapFactory.decodeStream(profilePicUrl.openConnection().getInputStream());
 //                                        // set profilePic bitmap to imageview
 //                                    }
 
-                                //accountInformation.setUrl("https://graph.facebook.com/" + userID + "/picture?type=large");
-                                Intent toMainActivity=new Intent(getApplicationContext(), PhoneNoActivity.class);
-                                startActivity(toMainActivity);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
+                                    //accountInformation.setUrl("https://graph.facebook.com/" + userID + "/picture?type=large");
+                                    Intent toMainActivity=new Intent(getApplicationContext(), PhoneNoActivity.class);
+                                    startActivity(toMainActivity);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
-                    });
-            Bundle parameters = new Bundle();
-            parameters.putString("fields", "id,name,email");
-            request.setParameters(parameters);
-            request.executeAsync();
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,name,email");
+                request.setParameters(parameters);
+                request.executeAsync();
+            }
         }
     }
 

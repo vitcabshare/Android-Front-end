@@ -53,10 +53,10 @@ public class AddATripResultActivity extends AppCompatActivity {
             emailVisibility.setText("Email(" + accountInformation.getEmail() + ") will not be visible to others");
         if(accountInformation.isPhoneNoEnabled())
         {
-            lastNameVisibility.setText("Phone no("+accountInformation.getPhoneNo()+") will be visible to others.");
+            phoneNoVisibility.setText("Phone no("+accountInformation.getPhoneNo()+") will be visible to others.");
         }
         else {
-            lastNameVisibility.setText("Phone no("+accountInformation.getPhoneNo()+") will not be visible to others.");
+            phoneNoVisibility.setText("Phone no("+accountInformation.getPhoneNo()+") will not be visible to others.");
         }
         if(accountInformation.isLastNameEnabled())
         {
@@ -69,7 +69,7 @@ public class AddATripResultActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onBackPressed();
             }
         });
 
