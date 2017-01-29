@@ -33,7 +33,7 @@
 </LinearLayout>
 
 <com.melnykov.fab.FloatingActionButton
-    android:src="@drawable/show_all_cabs_add_fab"
+    android:src="@drawable/ic_add"
     app:fabSize="normal"
     android:id="@+id/show_all_cabs_add"
     android:layout_width="wrap_content"

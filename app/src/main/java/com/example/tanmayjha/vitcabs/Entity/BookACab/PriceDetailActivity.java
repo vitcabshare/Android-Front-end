@@ -28,10 +28,7 @@ public class PriceDetailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
-                intent.putExtra("fragment",1);
-                startActivity(intent);
+            case android.R.id.home:onBackPressed();
                     return true;
             default:
                 return super.onOptionsItemSelected(item);
