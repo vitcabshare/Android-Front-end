@@ -36,6 +36,13 @@ public class SettingsActivity extends AppCompatActivity {
         emailSwitch=(Switch)findViewById(R.id.settings_switch_email);
         phoneNoSwitch=(Switch)findViewById(R.id.settings_switch_phone_no);
 
+        if(accountInformation.isLastNameEnabled())
+            lastNameSwitch.setChecked(true);
+        if(accountInformation.isEmailEnabled())
+            emailSwitch.setChecked(true);
+        if(accountInformation.isPhoneNoEnabled())
+            phoneNoSwitch.setChecked(true);
+
         if(!accountInformation.getLastName().trim().isEmpty()) {
             emailSwitch.setText("Show my email(" + accountInformation.getEmail() + ")to other?");
             lastNameSwitch.setText("Show my last name(" + accountInformation.getLastName() + ")?");

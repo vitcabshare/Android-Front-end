@@ -1,12 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context="com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers.ShowAllTravellersTabHolder">
-
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <android.support.design.widget.TabLayout
         android:id="@+id/show_all_travellers_tabs"
         android:layout_width="match_parent"
@@ -29,3 +31,14 @@
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>
+
+<com.melnykov.fab.FloatingActionButton
+    android:src="@drawable/show_all_cabs_add_fab"
+    app:fabSize="normal"
+    android:id="@+id/show_all_cabs_add"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|right"
+    android:layout_marginBottom="4dp"
+    android:layout_marginRight="4dp"/>
+</FrameLayout>

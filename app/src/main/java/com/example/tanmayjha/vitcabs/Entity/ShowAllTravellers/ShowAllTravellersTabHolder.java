@@ -1,6 +1,8 @@
 package com.example.tanmayjha.vitcabs.Entity.ShowAllTravellers;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tanmayjha.vitcabs.Boundary.Interface.FragmentChangeListener;
+import com.example.tanmayjha.vitcabs.Entity.AddATrip.AddATripFragment;
 import com.example.tanmayjha.vitcabs.R;
 
 import java.util.ArrayList;
@@ -23,6 +27,7 @@ public class ShowAllTravellersTabHolder extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    com.melnykov.fab.FloatingActionButton floatingActionButton;
 
     public ShowAllTravellersTabHolder() {
         // Required empty public constructor
@@ -52,6 +57,14 @@ public class ShowAllTravellersTabHolder extends Fragment {
         });
         viewPager.setCurrentItem(1);
         viewPager.setOffscreenPageLimit(3);
+        floatingActionButton=(com.melnykov.fab.FloatingActionButton)view.findViewById(R.id.show_all_cabs_add);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentChangeListener fragmentChangeListener=(FragmentChangeListener)getActivity();
+                fragmentChangeListener.replaceFragmentFromFragments(new AddATripFragment(),"Add A Trip");
+            }
+        });
     }
 
     class TravellerAdapter extends FragmentStatePagerAdapter {

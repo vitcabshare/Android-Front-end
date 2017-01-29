@@ -54,6 +54,30 @@
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Spinner
+                android:layout_height="wrap_content"
+                android:entries="@array/locations"
+                android:prompt="@string/spinner_prompt"
+                android:layout_width="0dp"
+                android:id="@+id/show_all_cab_from_location"
+                android:layout_weight="1">
+            </Spinner>
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/show_all_cab_to_location"
+                android:entries="@array/locations"
+                android:prompt="@string/spinner_prompt"
+                android:layout_weight="1">
+            </Spinner>
+        </LinearLayout>
+
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
