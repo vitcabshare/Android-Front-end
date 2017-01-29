@@ -193,7 +193,7 @@ public class BookACabFragment extends Fragment {
                     if(noOfPeopleEditText.getText().toString().isEmpty())
                     {
                         noOfPeopleLayout.setErrorEnabled(true);
-                        noOfPeopleLayout.setError("Enter no_of_people first");
+                        noOfPeopleLayout.setError("Enter no of people first");
                         if(noOfPeopleEditText.requestFocus())
                         {
                             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);

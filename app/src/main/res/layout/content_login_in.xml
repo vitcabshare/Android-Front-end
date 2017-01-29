@@ -21,13 +21,21 @@
         android:src="@drawable/logo"
         android:layout_gravity="center_horizontal"/>
 
-    <com.google.android.gms.common.SignInButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:id="@+id/button_sign_in">
-    </com.google.android.gms.common.SignInButton>
+        <com.facebook.login.widget.LoginButton
+            android:layout_marginTop="40dp"
+            android:id="@+id/facebook_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <com.google.android.gms.common.SignInButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/gmail_login"
+            android:layout_marginTop="10dp">
+        </com.google.android.gms.common.SignInButton>
 
     <TextView
         android:id="@+id/skip_this"
