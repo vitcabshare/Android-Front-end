@@ -59,6 +59,8 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setElevation(0);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
 
@@ -168,20 +170,25 @@ public class HomeActivity extends AppCompatActivity
 
             @Override
             public void onDrawerClosed(View drawerView) {
+
+                Fragment f =getSupportFragmentManager().findFragmentById(R.id.container);
                 if (id == R.id.nav_add_a_trip) {
-                    replaceFragment(new AddATripFragment(),"Add a Trip");
+                    if(!(f instanceof AddATripFragment))
+                        replaceFragment(new AddATripFragment(),"Add a Trip");
                 } else if (id == R.id.nav_pool_request) {
-                    replaceFragment(new PoolRequestFragment(),"Pool Request");
+                    if(!(f instanceof PoolRequestFragment))
+                        replaceFragment(new PoolRequestFragment(), "Pool Request");
                 } else if (id == R.id.nav_show_all_trip) {
-                    replaceFragment(new ShowAllTravellersTabHolder(),"All Travellers");
+                    if(!(f instanceof ShowAllTravellersTabHolder))
+                        replaceFragment(new ShowAllTravellersTabHolder(), "All Travellers");
                 } else if (id == R.id.nav_book_a_cab) {
+                    if(!(f instanceof BookACabFragment))
                     replaceFragment(new BookACabFragment(),"Book A Cab");
                 } else if (id == R.id.nav_about){
+                    if(!(f instanceof AboutUsFragment))
                     replaceFragment(new AboutUsFragment(),"About Us Fragment");
                 }
                 else if (id == R.id.nav_log_out){
-
-
                     Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                             new ResultCallback<Status>() {
                                 @Override

@@ -55,6 +55,7 @@ public class ShowAllTravellersTabHolder extends Fragment {
                 tabLayout.setupWithViewPager(viewPager);
             }
         });
+        tabLayout.setElevation(4);
         viewPager.setCurrentItem(1);
         viewPager.setOffscreenPageLimit(3);
         floatingActionButton=(com.melnykov.fab.FloatingActionButton)view.findViewById(R.id.show_all_cabs_add);
